@@ -10,6 +10,6 @@ urlpatterns = [
     # path('', views.index),
     path('', views.index, name='index'), 
     path('create-task/', views.create_task, name='create-task'), 
-    
+    path('update-task/<id>/', views.update_task, name='update-task'),
     
 ]

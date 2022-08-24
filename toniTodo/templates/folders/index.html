@@ -1,54 +1,36 @@
-{% load static %}
-{% comment %} {% load crispy_forms_tags %} {% endcomment %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
-    <title>ToDo List</title>
-</head>
-<body>
-    <!-- <h1>hello</h1> -->
-   <div class="container">
-    {% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li {% if message.tags %} class="{{ message.tags }}"{% endif %} class="message">{{ message }}</li>
-    {% endfor %}
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="{% url 'create-task' %}" method="post">
+    {% csrf_token %}
+<div class="input-area">
+<input type="text" name="title" placeholder="Add a task">
+<input type="text" name="description" placeholder="Add a description"  class="desc">
+<button type="submit"><i class="fas fa-plus"></i></button>
+</div>
+<!-- <button type="submit"><i class="fas fa-plus"></i></button> -->
+</form>
+
+<ul class="list">
+    {% for todo in todos  %}
+    <li>
+        <strong class="task">Task:</strong>
+        {{todo.title}} 
+        <span>
+            <a href="{% url 'update-task' todo.id %}"><i class="fas fa-pen"></i></a>
+            
+            <i class="fas fa-trash"></i>
+        </span>
+        <p class="description">
+            <strong>Description:</strong>
+            {{todo.description}}
+        </p>
+    </li>
+    {% endfor %} 
 </ul>
-{% endif %}
-
-    <header>ToDo List</header>
-
-    <form action="{% url 'create-task' %}" method="post">
-        {% csrf_token %}
-    <div class="input-area">
-    <input type="text" name="title" placeholder="Add a task">
-    <input type="text" name="description" placeholder="Add a description"  class="desc">
-    <button type="submit"><i class="fas fa-plus"></i></button>
-    </div>
-    <!-- <button type="submit"><i class="fas fa-plus"></i></button> -->
-    </form>
-
-    <ul class="list">
-        {% for todo in todos  %}
-        <li>
-            <strong class="task">Task:</strong>
-            {{todo.title}} <span><i class="fas fa-trash"></i></span>
-            <p class="description">
-                <strong>Description:</strong>
-                {{todo.description}}
-            </p>
-        </li>
-        {% endfor %} 
-    </ul>
-    <div class="footer">
-        <span>3 pending orders</span>
-        <button>Clear all</button>
-    </div>
-   </div>
-</body>
-</html>
+<div class="footer">
+    <span>3 pending orders</span>
+    <button>Clear all</button>
+</div>
+{% endblock  %}
+    
