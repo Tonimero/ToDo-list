@@ -45,9 +45,6 @@ header{
     outline: none;
 }
 
-.input-area input::placeholder:hover{
-   font-family: chiller
-}
 
 .input-area button{
     width: 50px;
@@ -84,7 +81,7 @@ header{
     line-height: 45px;
     position: relative;
     margin-bottom: 20px;
-    background-color: rgb(53, 138, 0);
+    background-color: rgb(49, 115, 8);
     border-radius: 3px;
     padding: 0 15px;
     cursor: default;
@@ -117,11 +114,23 @@ header{
     color: rgb(247, 12, 12) !important;
 }
 
+.list .fa-trash:hover{
+    color: rgb(181, 101, 101) !important;
+    transition: all .1s ease-in;
+    font-size: 18px;
+}
+
 .list .fa-pen{
     position: relative;
     top: 30px;
     right: 10px;
     color: rgb(7, 192, 109) !important;
+}
+
+.list .fa-pen:hover{
+    color: white !important;
+    transition: all .1s ease-in;
+    font-size: 18px;
 }
 
 .messages{
@@ -145,6 +154,7 @@ header{
     font-size: 16px;
     font-family:Arial, Helvetica, sans-serif;
 }
+/* UPDATE */
 
 
 .footer{
