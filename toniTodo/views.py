@@ -63,6 +63,12 @@ def update_task(request, id):
     #     context = {
     #         'form':form
     #     }
-        
-    
+
+def delete_task(request, id):
+    try:
+        delete_todo = ToDo.objects.get(id = id)
+    except ToDo.DoesNotExist:
+        return redirect('index')
+    delete_todo.delete()
+    return redirect('index')
 

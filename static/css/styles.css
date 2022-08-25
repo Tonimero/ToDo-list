@@ -95,12 +95,12 @@ header{
 
 .list li span{
     position: absolute;
-    right: -45px;
+    right: -80px;
     color: white;
-    width: 45px;
+    width: 80px;
     height: 100px;
     text-align: center;
-    background: rgb(104, 23, 5);
+    background: rgb(0, 0, 0);
     border-radius: 0 3px 3px 0;
 }
 
@@ -113,6 +113,15 @@ header{
 .list .fa-trash{
     position: relative;
     top: 30px;
+    left: 16px;
+    color: rgb(247, 12, 12) !important;
+}
+
+.list .fa-pen{
+    position: relative;
+    top: 30px;
+    right: 10px;
+    color: rgb(7, 192, 109) !important;
 }
 
 .messages{

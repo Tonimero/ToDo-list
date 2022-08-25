@@ -19,7 +19,7 @@
         <span>
             <a href="{% url 'update-task' todo.id %}"><i class="fas fa-pen"></i></a>
             
-            <i class="fas fa-trash"></i>
+            <a href="{% url 'delete-task' todo.id %}"><i class="fas fa-trash"></i></a>
         </span>
         <p class="description">
             <strong>Description:</strong>
