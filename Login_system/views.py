@@ -40,7 +40,7 @@ def login_user(request):
         if user is not None: # if the user matches the database entry, log them in
             login(request, user)
             # Redirect to a success page.
-            return redirect ('home')
+            return redirect ('index')
         else: 
             # Returns error message.
             messages.success(request, ("There Was An Error Logging In. Try Again..."))

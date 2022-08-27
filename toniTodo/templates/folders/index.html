@@ -20,6 +20,9 @@
         </form>
 
         <ul class="list">
+            
+            {% if request.user.is_authenticated %}
+                
             {% for todo in todos  %}
                 <li>
                     <strong class="task">Task:</strong>
@@ -34,7 +37,14 @@
                         {{todo.description}}
                     </p>
                 </li>
+                {% empty %}
+                No task added yet
             {% endfor %} 
+
+
+            {% else %}
+            <h1>No tasks added yet</h1>
+            {% endif %}
         </ul>
         <div class="footer">
             <span>3 pending orders</span>
