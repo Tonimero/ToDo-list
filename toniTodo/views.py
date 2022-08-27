@@ -76,13 +76,19 @@ def update_task(request, id):
     #     }
 
 def delete_task(request, id):
-    try:
-        delete_todo = ToDo.objects.get(id = id)
-    except ToDo.DoesNotExist:
-        return redirect('index')
-    if delete_todo != request.user:
+    delete_todo = ToDo.objects.get(id = id)
+    if delete_todo.author == request.user:
+        delete_todo.delete()
+        messages.success(request, 'deleted')
         return redirect('index')
     else:
-        delete_todo.delete()
-    return redirect('index')
+        return redirect('index')
+    # try:
+    #     delete_todo = ToDo.objects.get(id = id)
+    #     if delete_todo != request.user:
+    #         return redirect('index')
+    #     delete_todo.delete()
+    # except ToDo.DoesNotExist:
+    #     return redirect('index')
+    # return redirect('index')
 
