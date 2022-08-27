@@ -1,18 +1,20 @@
-{% extends 'base.html' %}
+{% extends 'folders/base.html' %}
 {% load crispy_forms_tags %}
-{% block content %}
 
-<form action="{% url 'update-task' task.id %}" method="post">
-    {% csrf_token %}
-    <!-- <input type="text" name="title" value="{{task.title}}" class="form-control">
-    <br>
-    <input type="text" name="title" value="{{task.description}}" class="form-control">  -->
-    <br>
-    {{form|crispy}} 
-    <br> 
-    <button type="submit" class="btn btn-success">Update Task</button>
-</form>
-<!-- <input type="text" name="title" value="{{task.title}}"> -->
-    
-{% endblock content %}
+{% block header %}
+    <div class="container">
+        <header>Update ToDo List </header>
+        <form action="{% url 'update-task' task.id %}" method="post">
+            {% csrf_token %}
+            <!-- <input type="text" name="title" value="{{task.title}}" class="form-control">
+            <br>
+            <input type="text" name="title" value="{{task.description}}" class="form-control">  -->
+            <br>
+            {{form|crispy}} 
+            <br> 
+            <button type="submit" class="btn btn-success">Update Task</button>
+        </form>
+        <!-- <input type="text" name="title" value="{{task.title}}"> -->
+    </div>
+{% endblock %}
     

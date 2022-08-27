@@ -1,0 +1,29 @@
+{% extends 'folders/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="form-container">
+    <header>Login</header>
+    {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %} class="message">{{ message }}</li>
+            {% endfor %}
+            </ul>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="form-text">Username</label>
+            <input type="text" class="form-control form-placeholder"  placeholder="Enter Username" name="username">
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1" class="form-text">Password</label>
+            <input type="password" class="form-control form-placeholder" id="exampleInputPassword1" placeholder="Password" name="password">
+        </div>
+        <br>
+        <input type="submit" class="btn btn-success" value="Submit">  
+    </form>
+</div> 
+{% endblock %}
+

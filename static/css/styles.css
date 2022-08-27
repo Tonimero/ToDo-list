@@ -188,5 +188,25 @@ header{
     color: gold;
 }
 
+/* LOGIN FORM */
+
+.form-container{
+    margin: 140px auto;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.form-text{
+    color: white;
+    font-size: 18px;
+}
+
+.form-placeholder{
+    font-size: 17px;
+}
+
+
 
 

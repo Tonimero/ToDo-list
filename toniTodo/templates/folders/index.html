@@ -1,36 +1,45 @@
-{% extends 'base.html' %}
+{% extends 'folders/base.html' %}
+{% block header %}
+    <div class="container">
+        {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %} class="message">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        <header>ToDo List</header>
+        <form action="{% url 'create-task' %}" method="post">
+            {% csrf_token %}
+        <div class="input-area">
+        <input type="text" name="title" placeholder="Add a task">
+        <input type="text" name="description" placeholder="Add a description"  class="desc">
+        <button type="submit"><i class="fas fa-plus"></i></button>
+        </div>
+        <!-- <button type="submit"><i class="fas fa-plus"></i></button> -->
+        </form>
 
-{% block content %}
-<form action="{% url 'create-task' %}" method="post">
-    {% csrf_token %}
-<div class="input-area">
-<input type="text" name="title" placeholder="Add a task">
-<input type="text" name="description" placeholder="Add a description"  class="desc">
-<button type="submit"><i class="fas fa-plus"></i></button>
-</div>
-<!-- <button type="submit"><i class="fas fa-plus"></i></button> -->
-</form>
-
-<ul class="list">
-    {% for todo in todos  %}
-    <li>
-        <strong class="task">Task:</strong>
-        {{todo.title}} 
-        <span>
-            <a href="{% url 'update-task' todo.id %}"><i class="fas fa-pen"></i></a>
-            
-            <a href="{% url 'delete-task' todo.id %}"><i class="fas fa-trash"></i></a>
-        </span>
-        <p class="description">
-            <strong>Description:</strong>
-            {{todo.description}}
-        </p>
-    </li>
-    {% endfor %} 
-</ul>
-<div class="footer">
-    <span>3 pending orders</span>
-    <button>Clear all</button>
-</div>
-{% endblock  %}
+        <ul class="list">
+            {% for todo in todos  %}
+                <li>
+                    <strong class="task">Task:</strong>
+                    {{todo.title}} 
+                    <span>
+                        <a href="{% url 'update-task' todo.id %}"><i class="fas fa-pen"></i></a>
+                        
+                        <a href="{% url 'delete-task' todo.id %}"><i class="fas fa-trash"></i></a>
+                    </span>
+                    <p class="description">
+                        <strong>Description:</strong>
+                        {{todo.description}}
+                    </p>
+                </li>
+            {% endfor %} 
+        </ul>
+        <div class="footer">
+            <span>3 pending orders</span>
+            <button>Clear all</button>
+        </div>
+    </div>
+{% endblock header %}
     

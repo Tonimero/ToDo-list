@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-import toniTodo
+import toniTodo, Login_system
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('toniTodo.urls'))
+    path('', include('toniTodo.urls')),
+    # path('login/', include('django.contrib.auth.urls')),
+    path('login/', include('Login_system.urls')),
 ]
