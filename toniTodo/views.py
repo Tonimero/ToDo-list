@@ -20,10 +20,12 @@ def index(request):
     # todos = ToDo.objects.order_by('-created_at') # sorts the data and returns all the values in descending order
     user = User.objects.filter(username=request.user)
     todos = ToDo.objects.filter(author__in=user)
+    tasks = ToDo.objects.filter(is_completed=False, author=request.user).count()
     form = addTask()
     context = {
         'todos':todos,
-        'form': form
+        'form': form,
+        'tasks':tasks,
     }
     return render(request, 'folders/index.html', context)
 

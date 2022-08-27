@@ -47,8 +47,15 @@
             {% endif %}
         </ul>
         <div class="footer">
-            <span>3 pending orders</span>
+            
+            {% if tasks > 0 %}
+            <span>{{tasks}} task uncompleted</span>
             <button>Clear all</button>
+            {% else %}
+            <span>No task</span>
+                
+            {% endif %}
+                
         </div>
     </div>
 {% endblock header %}
